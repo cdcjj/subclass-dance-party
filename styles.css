@@ -21,11 +21,103 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   position:absolute;
+  
 }
-.bouncy{
-  color: 'yellow';
-  border: 20px;
+
+.blink {
+  background-color: green;
+  border-color: green;
+  border-style: solid
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform:translateY(0); }
+  40% { transform: translateY(-50px); }
+  60% { transform: translateY(-20px); }
+}
+.bounce {
+  animation: bounce 1s infinite;
+  background-color: yellow;
+  border-color: yellow;
+}
+
+@keyframes pop {
+  0%, 20%, 50%, 80%, 100% { transform: scale(1); }
+  40% { transform: scale(.75);}
+  60% { transform: scale(.75);}
+}
+
+.pop {
+  animation: pop 1s infinite;
+  
+}
+
+.heart{
+    position: relative;
+    width: 100px;
+    height: 90px;
+    float: left;
+}
+.heart:before,
+.heart:after{
+    position: absolute;
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: pink;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+.heart:after{
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin :100% 100%;
+}
+
+.square {
+  border-radius: 0%;
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes fight {
+  0%, 20%, 50%, 80%, 100% { transform:translateY(0); }
+  40% { transform: translateX(50px); }
+  60% { transform: translateX(20px); }
+}
+.fight {
+  animation: fight 1s infinite;
+  border-color: red;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-radius:0;
+  border:0;
+  border-top: 20px solid transparent;
+  border-left: 40px solid red;
+  border-bottom: 20px solid transparent;
+}
+@keyframes hero {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/*rotate(angle) Defines a 2D rotation, the angle is specified in the parameter  Play it »
+rotate3d(x,y,z,angle) Defines a 3D rotation 
+rotateX(angle)  Defines a 3D rotation along the X-axis  Play it »
+rotateY(angle)  Defines a 3D rotation along the Y-axis  Play it »
+rotateZ(angle)*/
+
+.super-hero {
+  animation: hero 1s linear infinite;
+  border-color: orange ;
+  border-radius: 0;
 }
