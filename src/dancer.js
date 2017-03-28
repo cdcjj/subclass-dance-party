@@ -37,3 +37,35 @@ Dancer.prototype.lineUp = function(left) {
 
   this.$node.css({left: left});
 };
+
+Dancer.prototype.interactWithNeighbor = function() {
+  // debugger;
+  var neighbor = this._findNeighbor();
+  var newLeft = neighbor.$node.css('left');
+  var newTop = neighbor.$node.css('top');
+  this.$node.css({top: newTop, left: newLeft});
+};
+
+Dancer.prototype._findNeighbor = function() {
+  var smallestDist = Infinity;
+  var closestDancer, currDistance, dancerLeft, dancerTop;
+  var nodeLeft = this.$node.css('left');
+  var nodeTop = this.$node.css('top');
+  nodeLeft = +nodeLeft.slice(0, nodeLeft.length - 2);
+  nodeTop = +nodeTop.slice(0, nodeTop.length - 2);
+
+  for (let i = 0; i < dancers.length; i++) {
+    dancerLeft = dancers[i].$node.css('left');
+    dancerLeft = +dancerLeft.slice(0, dancerLeft.length - 2);
+    dancerTop = dancers[i].$node.css('top');
+    dancerTop = +dancerTop.slice(0, dancerTop.length - 2);
+
+    currDistance = Math.sqrt( Math.pow(nodeLeft - dancerLeft, 2) + Math.pow(nodeTop - dancerTop, 2) );
+    if (currDistance < smallestDist && currDistance !== 0) {
+      smallestDist = currDistance;
+      closestDancer = dancers[i];
+    }
+
+  }
+  return closestDancer;
+};
