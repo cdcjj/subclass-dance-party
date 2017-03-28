@@ -48,6 +48,7 @@ Dancer.prototype.interactWithNeighbor = function() {
 
 Dancer.prototype._findNeighbor = function() {
   var smallestDist = Infinity;
+  var limitDistance = 500;
   var closestDancer, currDistance, dancerLeft, dancerTop;
   var nodeLeft = this.$node.css('left');
   var nodeTop = this.$node.css('top');
@@ -61,7 +62,7 @@ Dancer.prototype._findNeighbor = function() {
     dancerTop = +dancerTop.slice(0, dancerTop.length - 2);
 
     currDistance = Math.sqrt( Math.pow(nodeLeft - dancerLeft, 2) + Math.pow(nodeTop - dancerTop, 2) );
-    if (currDistance < smallestDist && currDistance !== 0) {
+    if (currDistance < smallestDist && currDistance !== 0 && currDistance <= limitDistance) {
       smallestDist = currDistance;
       closestDancer = dancers[i];
     }

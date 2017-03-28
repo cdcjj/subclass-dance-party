@@ -1,7 +1,7 @@
 var SuperHeroDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.prepend('<img src="squirtle.jpeg" />');
-  this.$node.addClass('super-hero');
+  this.$node.addClass('superHero');
 };
 
 SuperHeroDancer.prototype = Object.create(Dancer.prototype);
@@ -14,5 +14,5 @@ SuperHeroDancer.prototype.step = function() {
   // toggle() is a jQuery method to show/hide the <span> tag.
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
-  
+  this.$node.toggleClass('');
 };
